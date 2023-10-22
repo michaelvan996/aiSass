@@ -1,39 +1,40 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { ArrowRight, BookImage, CodeIcon, CodepenIcon, FileCode, ListMusic, MessageSquarePlus, VideotapeIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 const tools = [
   {
-    label: "Chat",
+    label: "AI Chat",
     icon: MessageSquarePlus,
     color: "text-blue-500",
     bgColor: "bg-blue-500/10",
     href: "/conversation"
   },
   {
-    label: "Image",
+    label: "AI Image",
     icon: BookImage,
     color: "text-orange-500",
     bgColor: "bg-orange-500/10",
     href: "/image"
   },
   {
-    label: "Video",
+    label: "AI Video",
     icon: VideotapeIcon,
     color: "text-red-500",
     bgColor: "bg-red-500/10",
     href: "/video"
   },
   {
-    label: "Music",
+    label: "AI Music",
     icon: ListMusic,
     color: "text-violet-500",
     bgColor: "bg-violet-500/10",
     href: "/video"
   },
   {
-    label: "Code",
+    label: "AI Code",
     icon: FileCode,
     color: "text-yellow-500",
     bgColor: "bg-yellow-500/10",
@@ -42,6 +43,7 @@ const tools = [
 ]
 
 export default function DashBoardPage() {
+  const router = useRouter();
   return (
     <div>
       <div className="mb-8 space-y-4">
@@ -55,6 +57,7 @@ export default function DashBoardPage() {
       <div className="px-4 md:px-20 lg:px-32 space-y-4">
         {tools.map((tool) => (
           <Card
+            onClick={() => router.push(tool.href)}
             key={tool.href}
             className="p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pinter"
           >
